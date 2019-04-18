@@ -1,20 +1,13 @@
 package pl.mnastaly.brightlightjurnal.ingredient.importer;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class IngredientImportEntry {
 
     private final String name;
     private final String ingredientType;
-    private final Long kcal;
 
-    @Override
-    public String toString() {
-        return "IngredientImportEntry{" +
-                "name='" + name + '\'' +
-                ", ingredientType='" + ingredientType + '\'' +
-                ", kcal=" + kcal +
-                '}';
-    }
 }

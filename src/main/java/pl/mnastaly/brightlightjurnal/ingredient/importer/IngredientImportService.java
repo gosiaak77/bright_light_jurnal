@@ -12,12 +12,15 @@ public class IngredientImportService {
 
     @Autowired
     private IngredientRepository ingredientRepository;
+    @Autowired
+    CsvToIngredientImportEntry csvToIngredientImportEntry;
+
+
 
     public void processIngredientImportEntry(IngredientImportEntry ingredientImportEntry){
         Ingredient ingredient = Ingredient.builder()
                 .name(ingredientImportEntry.getName())
                 .ingredientType(determineIngredientType(ingredientImportEntry.getIngredientType()))
-                .kcal(ingredientImportEntry.getKcal())
                 .build();
         ingredientRepository.save(ingredient);
     }

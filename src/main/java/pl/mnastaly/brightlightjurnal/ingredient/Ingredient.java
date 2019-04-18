@@ -11,9 +11,9 @@ import javax.persistence.*;
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public Long id;
-    public String name;
-    public Long kcal;
+    private Long id;
+    private String name;
+    private Long kcal;
     @Enumerated(EnumType.STRING)
-    public IngredientType ingredientType;
+    private IngredientType ingredientType;
 }
