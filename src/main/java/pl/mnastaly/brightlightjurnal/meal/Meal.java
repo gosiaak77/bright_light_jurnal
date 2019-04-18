@@ -13,8 +13,8 @@ public class Meal {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public Long id;
     String mealName;
-    @Enumerated(EnumType.STRING)
     List<Ingredient> ingredients;
     String note;
+    @Enumerated(EnumType.STRING)
     MealType mealType;
 }

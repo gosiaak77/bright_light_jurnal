@@ -1,7 +1,6 @@
 package pl.mnastaly.brightlightjurnal.ingredient.importer;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.multipart.MultipartFile;
 import pl.mnastaly.brightlightjurnal.ingredient.IngredientRepository;
 
 public class IngredientImportValidator {
@@ -11,13 +10,21 @@ public class IngredientImportValidator {
     @Autowired
     IngredientImportService ingredientImportService;
 
-    public boolean validateIfIngredientNameIsUnique(IngredientImportEntry importEntry){
-        return ingredientRepository.findByName(importEntry.getName())==null;
+    public boolean validateIngredientImportEntry(IngredientImportEntry entry) {
+        if (validateIfIngredientNameIsUnique(entry) && isIngredientTypeValid(entry.getIngredientType())) {
+            return true;
+        } else
+            return false;
     }
 
-    public boolean isIngredientTypeValid(String ingredientType){
-        if (ingredientImportService.determineIngredientType(ingredientType) != null){
+    private boolean validateIfIngredientNameIsUnique(IngredientImportEntry importEntry) {
+        return ingredientRepository.findByName(importEntry.getName()) == null;
+    }
+
+    private boolean isIngredientTypeValid(String ingredientType) {
+        if (ingredientImportService.determineIngredientType(ingredientType) != null) {
             return true;
-        } else return false;
+        } else
+            return false;
     }
 }
