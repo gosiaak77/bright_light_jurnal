@@ -13,7 +13,6 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    private Long kcal;
     @Enumerated(EnumType.STRING)
     private IngredientType ingredientType;
 }
