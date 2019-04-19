@@ -18,9 +18,9 @@ public class IngredientImportController {
     @PostMapping(value = "/import/upload")
     public HttpStatus handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
         if (file.isEmpty()) {
-            ingredientImportService.processImportCsvFile(file);
             return HttpStatus.BAD_REQUEST;
         }
+        ingredientImportService.processImportCsvFile(file);
         return HttpStatus.OK;
     }
 
