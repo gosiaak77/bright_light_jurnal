@@ -3,10 +3,9 @@ package pl.mnastaly.brightlightjurnal.ingredient.importer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import pl.mnastaly.brightlightjurnal.ingredient.Ingredient;
-import pl.mnastaly.brightlightjurnal.ingredient.IngredientRepository;
-import pl.mnastaly.brightlightjurnal.ingredient.IngredientType;
-import pl.mnastaly.brightlightjurnal.ingredient.importer.IngredientImportEntry;
+import pl.mnastaly.brightlightjurnal.ingredient.Product;
+import pl.mnastaly.brightlightjurnal.ingredient.ProductRepository;
+import pl.mnastaly.brightlightjurnal.ingredient.ProductType;
 
 import java.util.List;
 
@@ -14,16 +13,16 @@ import java.util.List;
 public class IngredientImportService {
 
     @Autowired
-    private IngredientRepository ingredientRepository;
+    private ProductRepository ingredientRepository;
     @Autowired
-    CsvToIngredientImportEntry csvToIngredientImportEntry;
+    CsvToProductImportEntry csvToIngredientImportEntry;
     @Autowired
     IngredientImportValidator ingredientImportValidator;
 
 
     public void processImportCsvFile(MultipartFile file) {
-        List<IngredientImportEntry> entries = csvToIngredientImportEntry.convertCsvFileToIngredientImportEntries(file);
-        for (IngredientImportEntry entry : entries){
+        List<ProductImportEntry> entries = csvToIngredientImportEntry.convertCsvFileToIngredientImportEntries(file);
+        for (ProductImportEntry entry : entries){
             if (ingredientImportValidator.validateIngredientImportEntry(entry)){
                 saveIngredientFromImportEntry(entry);
             }
@@ -31,20 +30,20 @@ public class IngredientImportService {
 
     }
 
-    public IngredientType determineIngredientType(String ingredientType) {
+    public ProductType determineIngredientType(String ingredientType) {
         if (ingredientType.equals("FAT")) {
-            return IngredientType.FAT;
+            return ProductType.FAT;
         } else if (ingredientType.equals("PROTEIN")) {
-            return IngredientType.PROTEIN;
+            return ProductType.PROTEIN;
         } else if (ingredientType.equals("VEGETABLE")) {
-            return IngredientType.VEGETABLE;
+            return ProductType.VEGETABLE;
         } else if (ingredientType.equals("FRUIT")) {
-            return IngredientType.FRUIT;
+            return ProductType.FRUIT;
         } else throw new IllegalArgumentException("Wrong ingredient type");
     }
 
-    public void saveIngredientFromImportEntry(IngredientImportEntry entry) {
-        Ingredient ingredient = Ingredient.builder()
+    public void saveIngredientFromImportEntry(ProductImportEntry entry) {
+        Product ingredient = Product.builder()
                 .name(entry.getName())
                 .ingredientType(determineIngredientType(entry.getIngredientType()))
                 .build();

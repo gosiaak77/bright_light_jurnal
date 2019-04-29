@@ -8,11 +8,11 @@ import javax.persistence.*;
 @Entity
 @Data
 @Builder
-public class Ingredient {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     @Enumerated(EnumType.STRING)
-    private IngredientType ingredientType;
+    private ProductType ingredientType;
 }

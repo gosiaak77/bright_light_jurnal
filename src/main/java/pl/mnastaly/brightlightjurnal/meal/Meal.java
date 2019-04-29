@@ -1,10 +1,8 @@
 package pl.mnastaly.brightlightjurnal.meal;
 
 import lombok.Data;
-import pl.mnastaly.brightlightjurnal.ingredient.Ingredient;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
