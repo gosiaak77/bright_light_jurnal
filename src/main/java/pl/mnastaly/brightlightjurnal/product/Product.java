@@ -10,13 +10,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.mnastaly.brightlightjurnal.ingredient.Ingredient;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Data
-@Builder
 public class Product {
 
     @Id
@@ -27,4 +33,10 @@ public class Product {
     private ProductType productType;
     @OneToMany(mappedBy = "id")
     private List<Ingredient> ingredients;
+
+    public Product(Long id, String name, ProductType productType) {
+        this.id = id;
+        this.name = name;
+        this.productType = productType;
+    }
 }

@@ -1,16 +1,21 @@
 package pl.mnastaly.brightlightjurnal.product.importer;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.mnastaly.brightlightjurnal.product.ProductRepository;
+import pl.mnastaly.brightlightjurnal.product.ProductService;
 
 @Component
 public class ProductImportValidator {
 
-    @Autowired
-    ProductRepository productRepository;
-    @Autowired
-    ProductImportService productImportService;
+    private final ProductRepository productRepository;
+    private final ProductImportService productImportService;
+    private final ProductService productService;
+
+    public ProductImportValidator(ProductRepository productRepository, ProductImportService productImportService, ProductService productService) {
+        this.productRepository = productRepository;
+        this.productImportService = productImportService;
+        this.productService = productService;
+    }
 
     public boolean validateProductImportEntry(ProductImportEntry entry) {
         if (validateIfProductNameIsUnique(entry) && isProductTypeValid(entry.getProductType())) {
@@ -24,7 +29,7 @@ public class ProductImportValidator {
     }
 
     private boolean isProductTypeValid(String productType) {
-        if (productImportService.determineProductType(productType) != null) {
+        if (productService.determineProductType(productType) != null) {
             return true;
         } else
             return false;
