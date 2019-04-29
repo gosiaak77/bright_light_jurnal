@@ -1,4 +1,4 @@
-package pl.mnastaly.brightlightjurnal.ingredient.importer;
+package pl.mnastaly.brightlightjurnal.product.importer;
 
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +8,6 @@ import lombok.Data;
 public class ProductImportEntry {
 
     private final String name;
-    private final String ingredientType;
+    private final String productType;
 
 }

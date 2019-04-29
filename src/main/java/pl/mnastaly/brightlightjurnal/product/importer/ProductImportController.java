@@ -1,4 +1,4 @@
-package pl.mnastaly.brightlightjurnal.ingredient.importer;
+package pl.mnastaly.brightlightjurnal.product.importer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,14 +13,14 @@ import java.io.IOException;
 public class ProductImportController {
 
     @Autowired
-    IngredientImportService ingredientImportService;
+    ProductImportService productImportService;
 
     @PostMapping(value = "/import/upload")
     public HttpStatus handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
         if (file.isEmpty()) {
             return HttpStatus.BAD_REQUEST;
         }
-        ingredientImportService.processImportCsvFile(file);
+        productImportService.processImportCsvFile(file);
         return HttpStatus.OK;
     }
 

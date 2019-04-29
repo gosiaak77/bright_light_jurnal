@@ -1,4 +1,4 @@
-package pl.mnastaly.brightlightjurnal.ingredient;
+package pl.mnastaly.brightlightjurnal.product;
 
 import lombok.Builder;
 import lombok.Data;
@@ -14,5 +14,5 @@ public class Product {
     private Long id;
     private String name;
     @Enumerated(EnumType.STRING)
-    private ProductType ingredientType;
+    private ProductType productType;
 }

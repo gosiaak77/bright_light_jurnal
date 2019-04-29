@@ -1,4 +1,4 @@
-package pl.mnastaly.brightlightjurnal.ingredient;
+package pl.mnastaly.brightlightjurnal.product;
 
 public enum ProductType {
     FAT,

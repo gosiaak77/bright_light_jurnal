@@ -1,4 +1,4 @@
-package pl.mnastaly.brightlightjurnal.ingredient;
+package pl.mnastaly.brightlightjurnal.product;
 
 import org.springframework.data.repository.CrudRepository;
 

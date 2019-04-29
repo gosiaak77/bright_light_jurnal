@@ -6,9 +6,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet author="mnastaly" id="create ingredient table">
-        <comment>create ingredients table</comment>
-        <sql>CREATE TABLE ingredient (
+    <changeSet author="mnastaly" id="create product table">
+        <comment>create product table</comment>
+        <sql>CREATE TABLE product (
             id BIGSERIAL NOT NULL PRIMARY KEY,
             name VARCHAR(255),
             type VARCHAR(255)

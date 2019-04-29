@@ -1,4 +1,4 @@
-package pl.mnastaly.brightlightjurnal.ingredient.importer;
+package pl.mnastaly.brightlightjurnal.product.importer;
 
 import com.opencsv.CSVReader;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class CsvToProductImportEntry {
 
-    public List<ProductImportEntry> convertCsvFileToIngredientImportEntries(MultipartFile file) {
+    public List<ProductImportEntry> convertCsvFileToProductImportEntries(MultipartFile file) {
         List<ProductImportEntry> ingrediendtsEntries = new ArrayList<>();
         try {
             String[] row;
@@ -33,7 +33,7 @@ public class CsvToProductImportEntry {
         if (isRowValid) {
             return ProductImportEntry.builder()
                     .name(row[0])
-                    .ingredientType(row[1])
+                    .productType(row[1])
                     .build();
         } else throw new IllegalArgumentException("Wrong number of cells in .csv row");
     }
