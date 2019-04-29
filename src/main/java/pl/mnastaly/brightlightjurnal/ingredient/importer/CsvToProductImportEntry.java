@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class CsvToIngredientImportEntry {
+public class CsvToProductImportEntry {
 
-    public List<IngredientImportEntry> convertCsvFileToIngredientImportEntries(MultipartFile file) {
-        List<IngredientImportEntry> ingrediendtsEntries = new ArrayList<>();
+    public List<ProductImportEntry> convertCsvFileToIngredientImportEntries(MultipartFile file) {
+        List<ProductImportEntry> ingrediendtsEntries = new ArrayList<>();
         try {
             String[] row;
             InputStream is = file.getInputStream();
@@ -29,9 +29,9 @@ public class CsvToIngredientImportEntry {
         return ingrediendtsEntries;
     }
 
-    private IngredientImportEntry convertRowToImportEntry(String[] row, boolean isRowValid) {
+    private ProductImportEntry convertRowToImportEntry(String[] row, boolean isRowValid) {
         if (isRowValid) {
-            return IngredientImportEntry.builder()
+            return ProductImportEntry.builder()
                     .name(row[0])
                     .ingredientType(row[1])
                     .build();

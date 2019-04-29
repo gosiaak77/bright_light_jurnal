@@ -1,6 +1,6 @@
 package pl.mnastaly.brightlightjurnal.ingredient;
 
-public enum IngredientType {
+public enum ProductType {
     FAT,
     PROTEIN,
     VEGETABLE,
