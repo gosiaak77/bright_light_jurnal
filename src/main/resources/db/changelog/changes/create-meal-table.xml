@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <include file="/db/changelog/changes/create-hibernate-sequence.xml"/>
-    <include file="/db/changelog/changes/create-product-table.xml"/>
-    <include file="/db/changelog/changes/create-ingredient-table.xml"/>
-    <include file="/db/changelog/changes/create-meal-table.xml"/>
-    <include file="/db/changelog/changes/create-meal_x_ingredient-table.xml"/>
+    <changeSet author="mnastaly" id="create meal table">
+        <comment>create meal table</comment>
+        <sql>CREATE TABLE meal (
+            id BIGSERIAL NOT NULL PRIMARY KEY,
+            meal_name VARCHAR(255),
+            note VARCHAR(255),
+            meal_type VARCHAR(255)
+            );
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>

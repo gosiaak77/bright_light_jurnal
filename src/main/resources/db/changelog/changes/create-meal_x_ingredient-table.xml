@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="mnastaly" id="create meal_x_ingredient table">
+        <comment>create meal_x_ingredient table</comment>
+        <sql>CREATE TABLE meal_x_ingredient (
+            id BIGSERIAL NOT NULL,
+            id_meal BIGINT NOT NULL,
+            id_ingredient BIGINT NOT NULL,
+            FOREIGN KEY (id_meal) REFERENCES meal(id),
+            FOREIGN KEY (id_ingredient) REFERENCES ingredient(id),
+            PRIMARY KEY (id, id_meal, id_ingredient)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
